@@ -87,7 +87,7 @@
 - (void)slideViewOut:(id)sender
 {
     [UIView animateWithDuration:0.4f animations:^{
-        _tableNavigationController.view.frame = CGRectMake(CGRectGetWidth(_tableNavigationController.view.frame) * -1.0f, 0.0f, CGRectGetWidth(_tableNavigationController.view.frame), CGRectGetHeight(_tableNavigationController.view.frame));
+        _tableNavigationController.view.frame = CGRectMake(CGRectGetWidth(_tableNavigationController.view.frame) * -1, 0.0f, CGRectGetWidth(_tableNavigationController.view.frame), CGRectGetHeight(_tableNavigationController.view.frame));
     } completion:^(BOOL finished) {
         _tableNavigationController.view.clipsToBounds = YES;
         _tableNavigationController.navigationBar.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
@@ -131,12 +131,17 @@
 - (void)slideViewIn:(id)sender
 {
     _tableNavigationController.view.clipsToBounds = NO;
+
+    CGRect bounds = _tableNavigationController.navigationBar.layer.bounds;
+    UIBezierPath *navigationBarShadowPath = [UIBezierPath bezierPathWithRect:bounds];
+
+    _tableNavigationController.navigationBar.clipsToBounds = NO;
     _tableNavigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 0.0f);
     _tableNavigationController.navigationBar.layer.shadowRadius = 1.0f;
     _tableNavigationController.navigationBar.layer.shadowOpacity = 0.5;
+    _tableNavigationController.navigationBar.layer.shadowPath = navigationBarShadowPath.CGPath;
     _tableNavigationController.navigationBar.layer.shadowColor = [UIColor lightGrayColor].CGColor;
     
-    CGRect bounds = _tableNavigationController.navigationBar.layer.bounds;
     bounds.size.height += 5.0f;
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:bounds 
                                                    byRoundingCorners:(UIRectCornerTopRight)
@@ -149,10 +154,12 @@
     [_tableNavigationController.navigationBar.layer addSublayer:maskLayer];
     _tableNavigationController.navigationBar.layer.mask = maskLayer;
     
-    _tableNavigationController.view.clipsToBounds = NO;
+    UIBezierPath *tableViewShadowPath = [UIBezierPath bezierPathWithRect:_tableNavigationController.view.layer.bounds];
+    
     _tableNavigationController.view.layer.shadowOffset = CGSizeMake(1.0f, 0.0f);
     _tableNavigationController.view.layer.shadowRadius = 1.0f;
     _tableNavigationController.view.layer.shadowOpacity = 0.5;
+    _tableNavigationController.view.layer.shadowPath = tableViewShadowPath.CGPath;
     
     [UIView animateWithDuration:0.4f animations:^{
         _tableNavigationController.view.frame = CGRectMake(0.0f, 0.0f, CGRectGetWidth(_tableNavigationController.view.frame), CGRectGetHeight(_tableNavigationController.view.frame));
