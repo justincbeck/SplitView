@@ -1,0 +1,327 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9832837A15411B05002104D8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9832837915411B05002104D8 /* UIKit.framework */; };
+		9832837C15411B05002104D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9832837B15411B05002104D8 /* Foundation.framework */; };
+		9832837E15411B05002104D8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9832837D15411B05002104D8 /* CoreGraphics.framework */; };
+		9832838415411B05002104D8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9832838215411B05002104D8 /* InfoPlist.strings */; };
+		9832838615411B05002104D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9832838515411B05002104D8 /* main.m */; };
+		9832838A15411B05002104D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9832838915411B05002104D8 /* AppDelegate.m */; };
+		9832839715411CD4002104D8 /* JBSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9832839615411CD4002104D8 /* JBSplitViewController.m */; };
+		9832839C15411D40002104D8 /* JBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9832839B15411D40002104D8 /* JBTableViewController.m */; };
+		9832839F15411D5C002104D8 /* JBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9832839E15411D5C002104D8 /* JBViewController.m */; };
+		983283A315411E2E002104D8 /* JBTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 983283A215411E2E002104D8 /* JBTableView.m */; };
+		983283BC154221B0002104D8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 983283BB154221B0002104D8 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9832837515411B05002104D8 /* SplitView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9832837915411B05002104D8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9832837B15411B05002104D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9832837D15411B05002104D8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9832838115411B05002104D8 /* SplitView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SplitView-Info.plist"; sourceTree = "<group>"; };
+		9832838315411B05002104D8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9832838515411B05002104D8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9832838715411B05002104D8 /* SplitView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SplitView-Prefix.pch"; sourceTree = "<group>"; };
+		9832838815411B05002104D8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9832838915411B05002104D8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9832839515411CD4002104D8 /* JBSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSplitViewController.h; sourceTree = "<group>"; };
+		9832839615411CD4002104D8 /* JBSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSplitViewController.m; sourceTree = "<group>"; };
+		9832839A15411D40002104D8 /* JBTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBTableViewController.h; sourceTree = "<group>"; };
+		9832839B15411D40002104D8 /* JBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBTableViewController.m; sourceTree = "<group>"; };
+		9832839D15411D5C002104D8 /* JBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBViewController.h; sourceTree = "<group>"; };
+		9832839E15411D5C002104D8 /* JBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBViewController.m; sourceTree = "<group>"; };
+		983283A115411E2E002104D8 /* JBTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBTableView.h; sourceTree = "<group>"; };
+		983283A215411E2E002104D8 /* JBTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBTableView.m; sourceTree = "<group>"; };
+		983283BB154221B0002104D8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9832837215411B05002104D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				983283BC154221B0002104D8 /* QuartzCore.framework in Frameworks */,
+				9832837A15411B05002104D8 /* UIKit.framework in Frameworks */,
+				9832837C15411B05002104D8 /* Foundation.framework in Frameworks */,
+				9832837E15411B05002104D8 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9832836A15411B05002104D8 = {
+			isa = PBXGroup;
+			children = (
+				9832837F15411B05002104D8 /* SplitView */,
+				9832837815411B05002104D8 /* Frameworks */,
+				9832837615411B05002104D8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9832837615411B05002104D8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9832837515411B05002104D8 /* SplitView.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9832837815411B05002104D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				983283BB154221B0002104D8 /* QuartzCore.framework */,
+				9832837915411B05002104D8 /* UIKit.framework */,
+				9832837B15411B05002104D8 /* Foundation.framework */,
+				9832837D15411B05002104D8 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9832837F15411B05002104D8 /* SplitView */ = {
+			isa = PBXGroup;
+			children = (
+				9832839915411D15002104D8 /* JBDetailViewController */,
+				9832839815411D09002104D8 /* JBTableViewController */,
+				9832839415411CAA002104D8 /* JBSplitViewController */,
+				9832838815411B05002104D8 /* AppDelegate.h */,
+				9832838915411B05002104D8 /* AppDelegate.m */,
+				9832838015411B05002104D8 /* Supporting Files */,
+			);
+			path = SplitView;
+			sourceTree = "<group>";
+		};
+		9832838015411B05002104D8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9832838115411B05002104D8 /* SplitView-Info.plist */,
+				9832838215411B05002104D8 /* InfoPlist.strings */,
+				9832838515411B05002104D8 /* main.m */,
+				9832838715411B05002104D8 /* SplitView-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9832839415411CAA002104D8 /* JBSplitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9832839515411CD4002104D8 /* JBSplitViewController.h */,
+				9832839615411CD4002104D8 /* JBSplitViewController.m */,
+			);
+			name = JBSplitViewController;
+			sourceTree = "<group>";
+		};
+		9832839815411D09002104D8 /* JBTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				983283A015411E15002104D8 /* JBTableView */,
+				9832839A15411D40002104D8 /* JBTableViewController.h */,
+				9832839B15411D40002104D8 /* JBTableViewController.m */,
+			);
+			name = JBTableViewController;
+			sourceTree = "<group>";
+		};
+		9832839915411D15002104D8 /* JBDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9832839D15411D5C002104D8 /* JBViewController.h */,
+				9832839E15411D5C002104D8 /* JBViewController.m */,
+			);
+			name = JBDetailViewController;
+			sourceTree = "<group>";
+		};
+		983283A015411E15002104D8 /* JBTableView */ = {
+			isa = PBXGroup;
+			children = (
+				983283A115411E2E002104D8 /* JBTableView.h */,
+				983283A215411E2E002104D8 /* JBTableView.m */,
+			);
+			name = JBTableView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9832837415411B05002104D8 /* SplitView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9832838D15411B05002104D8 /* Build configuration list for PBXNativeTarget "SplitView" */;
+			buildPhases = (
+				9832837115411B05002104D8 /* Sources */,
+				9832837215411B05002104D8 /* Frameworks */,
+				9832837315411B05002104D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SplitView;
+			productName = SplitView;
+			productReference = 9832837515411B05002104D8 /* SplitView.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9832836C15411B05002104D8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = Intalgent;
+			};
+			buildConfigurationList = 9832836F15411B05002104D8 /* Build configuration list for PBXProject "SplitView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9832836A15411B05002104D8;
+			productRefGroup = 9832837615411B05002104D8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9832837415411B05002104D8 /* SplitView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9832837315411B05002104D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9832838415411B05002104D8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9832837115411B05002104D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9832838615411B05002104D8 /* main.m in Sources */,
+				9832838A15411B05002104D8 /* AppDelegate.m in Sources */,
+				9832839715411CD4002104D8 /* JBSplitViewController.m in Sources */,
+				9832839C15411D40002104D8 /* JBTableViewController.m in Sources */,
+				9832839F15411D5C002104D8 /* JBViewController.m in Sources */,
+				983283A315411E2E002104D8 /* JBTableView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9832838215411B05002104D8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9832838315411B05002104D8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9832838B15411B05002104D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9832838C15411B05002104D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9832838E15411B05002104D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SplitView/SplitView-Prefix.pch";
+				INFOPLIST_FILE = "SplitView/SplitView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9832838F15411B05002104D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SplitView/SplitView-Prefix.pch";
+				INFOPLIST_FILE = "SplitView/SplitView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9832836F15411B05002104D8 /* Build configuration list for PBXProject "SplitView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9832838B15411B05002104D8 /* Debug */,
+				9832838C15411B05002104D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9832838D15411B05002104D8 /* Build configuration list for PBXNativeTarget "SplitView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9832838E15411B05002104D8 /* Debug */,
+				9832838F15411B05002104D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9832836C15411B05002104D8 /* Project object */;
+}
