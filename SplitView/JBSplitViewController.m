@@ -32,7 +32,13 @@
         _tableNavigationController = [[UINavigationController alloc] initWithRootViewController:_tableViewController];
         
         _viewController = [[JBViewController alloc] initWithNibName:nil bundle:nil];
-        _viewController.label.text = @"Initial View";
+        _viewController.view.backgroundColor = [UIColor redColor];
+        
+        _rightGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideViewIn:)];
+        _rightGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+        
+        _leftGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideViewOut:)];
+        _leftGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
         
         _detailNavigationController = [[UINavigationController alloc] initWithRootViewController:_viewController];
         
@@ -47,12 +53,17 @@
 {
     [super viewDidLoad];
     
-    UIBarButtonItem *slideButton = [[UIBarButtonItem alloc] 
-                                   initWithTitle:@"Slide"                                            
-                                   style:UIBarButtonItemStyleBordered 
-                                   target:self 
-                                   action:@selector(slideViewIn:)];
-    _viewController.navigationItem.rightBarButtonItem = slideButton;
+    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation))
+    {
+        UIBarButtonItem *slideButton = [[UIBarButtonItem alloc] 
+                                       initWithTitle:@"Slide"                                            
+                                       style:UIBarButtonItemStyleBordered 
+                                       target:self 
+                                       action:@selector(slideViewIn:)];
+        _viewController.navigationItem.rightBarButtonItem = slideButton;
+        
+        [_viewController.view addGestureRecognizer:_rightGestureRecognizer];
+    }
     
     UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh
                                                                      target:self
@@ -60,11 +71,6 @@
     
     [_tableViewController setToolbarItems:[NSArray arrayWithObjects:refreshButton, nil] animated:YES];
     _tableNavigationController.toolbarHidden = NO;
-    
-    UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideViewIn:)];
-    gestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    [_viewController.view addGestureRecognizer:gestureRecognizer];
 }
 
 - (void)viewDidUnload
@@ -78,16 +84,12 @@
 	return YES;
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-
-    if (UIInterfaceOrientationIsPortrait(fromInterfaceOrientation))
+    if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation))
     {
-        for (UIGestureRecognizer *gr in _viewController.view.gestureRecognizers)
-        {
-            [_viewController.view removeGestureRecognizer:gr];
-        }
+        [_viewController.view removeGestureRecognizer:_leftGestureRecognizer];
+        [_viewController.view addGestureRecognizer:_rightGestureRecognizer];
     }
     
     [self slideViewOut:self];
@@ -108,15 +110,8 @@
         _tableNavigationController.view.layer.shadowRadius = 0.0f;
         _tableNavigationController.view.layer.shadowOpacity = 0.0f;
         
-        for (UIGestureRecognizer *gr in _viewController.view.gestureRecognizers)
-        {
-            [_viewController.view removeGestureRecognizer:gr];
-        }
-        
-        UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideViewIn:)];
-        gestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-        
-        [_viewController.view addGestureRecognizer:gestureRecognizer];
+        [_viewController.view removeGestureRecognizer:_leftGestureRecognizer];
+        [_viewController.view addGestureRecognizer:_rightGestureRecognizer];
     }];
 }
 
@@ -124,16 +119,6 @@
 {
     NSArray *viewControllers = [NSArray arrayWithObjects:self.tableNavigationController, [[UINavigationController alloc] initWithRootViewController:viewController], nil];
 
-    UISwipeGestureRecognizer *rightGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideViewIn:)];
-    rightGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    [viewController.view addGestureRecognizer:rightGestureRecognizer];
-    
-    UISwipeGestureRecognizer *leftGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideViewOut:)];
-    leftGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-    
-    [viewController.view addGestureRecognizer:leftGestureRecognizer];
-    
     self.viewControllers = viewControllers;
 }
 
@@ -173,15 +158,8 @@
     [UIView animateWithDuration:0.2f animations:^{
         _tableNavigationController.view.frame = CGRectMake(0.0f, 0.0f, CGRectGetWidth(_tableNavigationController.view.frame), CGRectGetHeight(_tableNavigationController.view.frame));
     } completion:^(BOOL finished) {
-        for (UIGestureRecognizer *gr in _viewController.view.gestureRecognizers)
-        {
-            [_viewController.view removeGestureRecognizer:gr];
-        }
-        
-        UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideViewOut:)];
-        gestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-        
-        [_viewController.view addGestureRecognizer:gestureRecognizer];
+        [_viewController.view removeGestureRecognizer:_rightGestureRecognizer];
+        [_viewController.view addGestureRecognizer:_leftGestureRecognizer];
     }];
 }
 

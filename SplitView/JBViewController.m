@@ -16,20 +16,11 @@
 
 @implementation JBViewController
 
-@synthesize tableViewCoordinateLabel = _tableViewCoordinateLabel;
-@synthesize label = _label;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        UIView *view = [[UIView alloc] initWithFrame:self.navigationController.view.frame];
-        view.backgroundColor = [UIColor whiteColor];
-        _label = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 100.0f, 200.0f, 40.0f)];
-        _label.backgroundColor = [UIColor whiteColor];
-        [view addSubview:_label];
-        
-        self.view = view;
+        self.view = [[UIView alloc] initWithFrame:self.navigationController.view.frame];
     }
     return self;
 }

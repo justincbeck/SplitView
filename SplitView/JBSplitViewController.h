@@ -18,6 +18,9 @@
     
     JBViewController *_viewController;
     UINavigationController *_detailNavigationController;
+    
+    UISwipeGestureRecognizer *_rightGestureRecognizer;
+    UISwipeGestureRecognizer *_leftGestureRecognizer;
 }
 
 @property (nonatomic, strong) JBTableViewController *tableViewController;

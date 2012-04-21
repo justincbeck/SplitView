@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "JBTableView.h"
-
 @interface JBTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISplitViewControllerDelegate>
 {
-    JBTableView *_tableView;
+    UITableView *_tableView;
 }
 
 @property (nonatomic, strong) UITableView *tableView;

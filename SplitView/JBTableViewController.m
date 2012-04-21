@@ -31,7 +31,7 @@
 
 - (void)loadView
 {
-    _tableView = [[JBTableView alloc] initWithFrame:self.navigationController.view.frame style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:self.navigationController.view.frame style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     self.view = _tableView;
@@ -74,10 +74,10 @@
     }
     
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"First Controller";
+        cell.textLabel.text = @"Green";
     }
     else {
-        cell.textLabel.text = @"Second Controller";
+        cell.textLabel.text = @"Blue";
     }
     
     return cell;
@@ -88,8 +88,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIInterfaceOrientation orientation = [[UIDevice currentDevice] orientation];
-    if (orientation == 0 || UIInterfaceOrientationIsPortrait(orientation))
+    UIInterfaceOrientation orientation = self.interfaceOrientation;
+    if (UIInterfaceOrientationIsPortrait(orientation))
     {
         [UIView animateWithDuration:0.4f animations:^{
             self.navigationController.view.frame = CGRectMake(CGRectGetWidth(self.navigationController.view.frame) * -1, 0.0f, CGRectGetWidth(self.navigationController.view.frame), CGRectGetHeight(self.navigationController.view.frame));
@@ -110,12 +110,12 @@
             
             if (row == 0) {
                 detailViewController = [[JBViewController alloc] initWithNibName:@"FirstDetailView" bundle:nil];
-                detailViewController.label.text = @"First View Controller";
+                detailViewController.view.backgroundColor = [UIColor greenColor];
             }
             
             if (row == 1) {
                 detailViewController = [[JBViewController alloc] initWithNibName:@"SecondDetailView" bundle:nil];
-                detailViewController.label.text = @"Second View Controller";
+                detailViewController.view.backgroundColor = [UIColor blueColor];
             }
             
             UIBarButtonItem *slideButton = [[UIBarButtonItem alloc] 
@@ -137,12 +137,12 @@
         
         if (row == 0) {
             detailViewController = [[JBViewController alloc] initWithNibName:@"FirstDetailView" bundle:nil];
-            detailViewController.label.text = @"First View Controller";
+            detailViewController.view.backgroundColor = [UIColor greenColor];
         }
         
         if (row == 1) {
             detailViewController = [[JBViewController alloc] initWithNibName:@"SecondDetailView" bundle:nil];
-            detailViewController.label.text = @"Second View Controller";
+            detailViewController.view.backgroundColor = [UIColor blueColor];
         }
         
         [((JBSplitViewController *)self.splitViewController) replaceDetailViewControllerWithDetailViewController:detailViewController];

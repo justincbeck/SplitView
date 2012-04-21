@@ -9,12 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface JBViewController : UIViewController
-{
-    UILabel *_tableViewCoordinateLabel;
-    UILabel *_label;
-}
-
-@property (nonatomic, strong) UILabel *tableViewCoordinateLabel;
-@property (nonatomic, strong) UILabel *label;
 
 @end
