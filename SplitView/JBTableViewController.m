@@ -13,6 +13,8 @@
 
 @interface JBTableViewController ()
 
+- (void)refresh:(id)sender;
+
 @end
 
 @implementation JBTableViewController
@@ -39,6 +41,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh
+                                                                     target:self
+                                                                     action:@selector(refresh:)];
+    
+    [self setToolbarItems:[NSArray arrayWithObjects:refreshButton, nil] animated:YES];
+    self.navigationController.toolbarHidden = NO;
 }
 
 - (void)viewDidUnload
@@ -98,6 +106,12 @@
     
     [((JBSplitViewController *)self.splitViewController) slideViewOut:self];
     [((JBSplitViewController *)self.splitViewController) replaceDetailViewControllerWithDetailViewController:detailViewController];
+}
+
+
+- (void)refresh:(id)sender
+{
+    [self.tableView reloadData];
 }
 
 @end

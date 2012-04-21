@@ -32,7 +32,7 @@
         
         _viewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
         _viewController.view = [[UIView alloc] initWithFrame:_viewController.navigationController.view.frame];
-        _viewController.view.backgroundColor = [UIColor redColor];
+        _viewController.view.backgroundColor = [UIColor greenColor];
         
         _detailNavigationController = [[UINavigationController alloc] initWithRootViewController:_viewController];
         
@@ -44,29 +44,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation))
-    {
-        UIBarButtonItem *slideButton = [[UIBarButtonItem alloc] 
-                                       initWithTitle:@"Slide"                                            
-                                       style:UIBarButtonItemStyleBordered 
-                                       target:self 
-                                       action:@selector(slideViewIn:)];
-        
-        _viewController.navigationItem.rightBarButtonItem = slideButton;
-        
-        NSLog(@"Add right gesture");
-        UISwipeGestureRecognizer *rightGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideViewIn:)];
-        rightGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-        [_viewController.view addGestureRecognizer:rightGestureRecognizer];
-    }
-    
-    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonSystemItemRefresh
-                                                                     target:self
-                                                                     action:@selector(refresh:)];
-    
-    [_tableViewController setToolbarItems:[NSArray arrayWithObjects:refreshButton, nil] animated:YES];
-    _tableNavigationController.toolbarHidden = NO;
+    [self replaceDetailViewControllerWithDetailViewController:_viewController];
 }
 
 - (void)viewDidUnload
@@ -84,18 +62,15 @@
 {
     for (UIGestureRecognizer *sgr in _viewController.view.gestureRecognizers)
     {
-        NSLog(@"Removing gesture");
         [_viewController.view removeGestureRecognizer:sgr];
     }
 
     if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation))
     {
-        NSLog(@"Adding left gesture");
         UISwipeGestureRecognizer *leftGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideViewOut:)];
         leftGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
         [_viewController.view removeGestureRecognizer:leftGestureRecognizer];
 
-        NSLog(@"Adding right gesture");
         UISwipeGestureRecognizer *rightGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideViewIn:)];
         rightGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
         [_viewController.view addGestureRecognizer:rightGestureRecognizer];
@@ -119,13 +94,11 @@
         _tableNavigationController.view.layer.shadowRadius = 0.0f;
         _tableNavigationController.view.layer.shadowOpacity = 0.0f;
         
-        NSLog(@"Remove left gesture");
         for (UIGestureRecognizer *sgr in _viewController.view.gestureRecognizers)
         {
             [_viewController.view removeGestureRecognizer:sgr];
         }
         
-        NSLog(@"Add right gesture");
         UISwipeGestureRecognizer *rightGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideViewIn:)];
         rightGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
         [_viewController.view addGestureRecognizer:rightGestureRecognizer];
@@ -144,9 +117,8 @@
                                         target:self.splitViewController 
                                         action:@selector(slideViewIn:)];
         
-        _viewController.navigationItem.rightBarButtonItem = slideButton;
+        _viewController.navigationItem.leftBarButtonItem = slideButton;
         
-        NSLog(@"Add right gesture");
         UISwipeGestureRecognizer *rightGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideViewIn:)];
         rightGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
         [viewController.view addGestureRecognizer:rightGestureRecognizer];
@@ -192,22 +164,15 @@
     [UIView animateWithDuration:0.2f animations:^{
         _tableNavigationController.view.frame = CGRectMake(0.0f, 0.0f, CGRectGetWidth(_tableNavigationController.view.frame), CGRectGetHeight(_tableNavigationController.view.frame));
     } completion:^(BOOL finished) {
-        NSLog(@"Remove right gesture");
         for (UISwipeGestureRecognizer *sgr in _viewController.view.gestureRecognizers)
         {
             [_viewController.view removeGestureRecognizer:sgr];
         }
 
-        NSLog(@"Add left gesture");
         UISwipeGestureRecognizer *leftGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(slideViewOut:)];
         leftGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
         [_viewController.view addGestureRecognizer:leftGestureRecognizer];
     }];
-}
-
-- (void)refresh:(id)sender
-{
-    NSLog(@"Refresh");
 }
 
 @end
