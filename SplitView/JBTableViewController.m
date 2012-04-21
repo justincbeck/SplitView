@@ -8,7 +8,6 @@
 
 #import "JBSplitViewController.h"
 #import "JBTableViewController.h"
-#import "JBViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -73,12 +72,11 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    if (indexPath.row == 0) {
+    if (indexPath.row == 0)
         cell.textLabel.text = @"Green";
-    }
-    else {
+
+    else
         cell.textLabel.text = @"Blue";
-    }
     
     return cell;
 }
@@ -88,65 +86,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIInterfaceOrientation orientation = self.interfaceOrientation;
-    if (UIInterfaceOrientationIsPortrait(orientation))
-    {
-        [UIView animateWithDuration:0.4f animations:^{
-            self.navigationController.view.frame = CGRectMake(CGRectGetWidth(self.navigationController.view.frame) * -1, 0.0f, CGRectGetWidth(self.navigationController.view.frame), CGRectGetHeight(self.navigationController.view.frame));
-        } completion:^(BOOL finished) {
-            self.navigationController.view.clipsToBounds = YES;
-            self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-            self.navigationController.navigationBar.layer.shadowRadius = 0.0f;
-            self.navigationController.navigationBar.layer.shadowOpacity = 0.0f;
-            
-            self.navigationController.view.clipsToBounds = YES;
-            self.navigationController.view.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-            self.navigationController.view.layer.shadowRadius = 0.0f;
-            self.navigationController.view.layer.shadowOpacity = 0.0f;
-            
-            NSUInteger row = indexPath.row;
-            
-            JBViewController *detailViewController = nil;
-            
-            if (row == 0) {
-                detailViewController = [[JBViewController alloc] initWithNibName:@"FirstDetailView" bundle:nil];
-                detailViewController.view.backgroundColor = [UIColor greenColor];
-            }
-            
-            if (row == 1) {
-                detailViewController = [[JBViewController alloc] initWithNibName:@"SecondDetailView" bundle:nil];
-                detailViewController.view.backgroundColor = [UIColor blueColor];
-            }
-            
-            UIBarButtonItem *slideButton = [[UIBarButtonItem alloc] 
-                                            initWithTitle:@"Slide"                                            
-                                            style:UIBarButtonItemStyleBordered 
-                                            target:self.splitViewController 
-                                            action:@selector(slideViewIn:)];
-            
-            detailViewController.navigationItem.rightBarButtonItem = slideButton;
-            
-            [((JBSplitViewController *)self.splitViewController) replaceDetailViewControllerWithDetailViewController:detailViewController];
-        }];
-    }
-    else
-    {
-        NSUInteger row = indexPath.row;
-        
-        JBViewController *detailViewController = nil;
-        
-        if (row == 0) {
-            detailViewController = [[JBViewController alloc] initWithNibName:@"FirstDetailView" bundle:nil];
-            detailViewController.view.backgroundColor = [UIColor greenColor];
-        }
-        
-        if (row == 1) {
-            detailViewController = [[JBViewController alloc] initWithNibName:@"SecondDetailView" bundle:nil];
-            detailViewController.view.backgroundColor = [UIColor blueColor];
-        }
-        
-        [((JBSplitViewController *)self.splitViewController) replaceDetailViewControllerWithDetailViewController:detailViewController];
-    }
+    NSUInteger row = indexPath.row;
+    UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+    detailViewController.view = [[UIView alloc] initWithFrame:detailViewController.navigationController.view.frame];
+    
+    if (row == 0)
+        detailViewController.view.backgroundColor = [UIColor greenColor];
+    
+    else if (row == 1)
+        detailViewController.view.backgroundColor = [UIColor blueColor];
+    
+    [((JBSplitViewController *)self.splitViewController) slideViewOut:self];
+    [((JBSplitViewController *)self.splitViewController) replaceDetailViewControllerWithDetailViewController:detailViewController];
 }
 
 @end

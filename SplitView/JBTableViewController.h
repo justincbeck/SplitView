@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JBTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISplitViewControllerDelegate>
+@interface JBTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     UITableView *_tableView;
 }
