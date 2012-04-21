@@ -81,12 +81,21 @@
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+
+    if (UIInterfaceOrientationIsPortrait(fromInterfaceOrientation))
+    {
+        for (UIGestureRecognizer *gr in _viewController.view.gestureRecognizers)
+        {
+            [_viewController.view removeGestureRecognizer:gr];
+        }
+    }
+    
     [self slideViewOut:self];
 }
 
 - (void)slideViewOut:(id)sender
 {
-    [UIView animateWithDuration:0.4f animations:^{
+    [UIView animateWithDuration:0.2f animations:^{
         _tableNavigationController.view.frame = CGRectMake(CGRectGetWidth(_tableNavigationController.view.frame) * -1, 0.0f, CGRectGetWidth(_tableNavigationController.view.frame), CGRectGetHeight(_tableNavigationController.view.frame));
     } completion:^(BOOL finished) {
         _tableNavigationController.view.clipsToBounds = YES;
@@ -161,7 +170,7 @@
     _tableNavigationController.view.layer.shadowOpacity = 0.5;
     _tableNavigationController.view.layer.shadowPath = tableViewShadowPath.CGPath;
     
-    [UIView animateWithDuration:0.4f animations:^{
+    [UIView animateWithDuration:0.2f animations:^{
         _tableNavigationController.view.frame = CGRectMake(0.0f, 0.0f, CGRectGetWidth(_tableNavigationController.view.frame), CGRectGetHeight(_tableNavigationController.view.frame));
     } completion:^(BOOL finished) {
         for (UIGestureRecognizer *gr in _viewController.view.gestureRecognizers)
