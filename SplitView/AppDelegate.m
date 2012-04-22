@@ -32,7 +32,7 @@
         
         NSArray *viewControllers = [NSArray arrayWithObjects:tableNavController, detailNavController, nil];
 
-        UISplitViewController *splitViewController = [[UISplitViewController alloc] initWithNibName:nil bundle:nil];
+        UISplitViewController *splitViewController = [[UISplitViewController alloc] init];
         splitViewController.delegate = detailViewController;
         splitViewController.viewControllers = viewControllers;
         
