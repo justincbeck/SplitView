@@ -9,11 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-{
-    UISplitViewController *_splitViewController;
-}
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UISplitViewController *splitViewController;
 
 @end

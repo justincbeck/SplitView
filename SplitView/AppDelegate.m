@@ -8,24 +8,41 @@
 
 #import "AppDelegate.h"
 
-#import "JBSplitViewController.h"
+#import "JBTableViewController.h"
+#import "JBDetailViewController.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize splitViewController = _splitViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    _splitViewController = [[JBSplitViewController alloc] initWithNibName:nil bundle:nil];
-    _splitViewController.view.frame = self.window.frame;
+    JBTableViewController *tableViewController = [[JBTableViewController alloc] initWithNibName:nil bundle:nil];
+    UINavigationController *tableNavController = [[UINavigationController alloc] initWithRootViewController:tableViewController];
     
-    self.window.rootViewController = _splitViewController;
+    JBDetailViewController *detailViewController = [[JBDetailViewController alloc] initWithNibName:nil bundle:nil];
     
+    [tableViewController setDetailViewController:detailViewController];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        UINavigationController *detailNavController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+        
+        NSArray *viewControllers = [NSArray arrayWithObjects:tableNavController, detailNavController, nil];
 
-    self.window.backgroundColor = [UIColor whiteColor];
+        UISplitViewController *splitViewController = [[UISplitViewController alloc] initWithNibName:nil bundle:nil];
+        splitViewController.delegate = detailViewController;
+        splitViewController.viewControllers = viewControllers;
+        
+        [[self window] setRootViewController:splitViewController];
+    }
+    else
+    {
+        [[self window] setRootViewController:tableNavController];
+    }
+    
     [self.window makeKeyAndVisible];
     
     return YES;

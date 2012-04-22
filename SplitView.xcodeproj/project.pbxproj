@@ -13,9 +13,9 @@
 		9832838415411B05002104D8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9832838215411B05002104D8 /* InfoPlist.strings */; };
 		9832838615411B05002104D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9832838515411B05002104D8 /* main.m */; };
 		9832838A15411B05002104D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9832838915411B05002104D8 /* AppDelegate.m */; };
-		9832839715411CD4002104D8 /* JBSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9832839615411CD4002104D8 /* JBSplitViewController.m */; };
 		9832839C15411D40002104D8 /* JBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9832839B15411D40002104D8 /* JBTableViewController.m */; };
 		983283BC154221B0002104D8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 983283BB154221B0002104D8 /* QuartzCore.framework */; };
+		989063E515443FB300F5BE1D /* JBDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 989063E415443FB300F5BE1D /* JBDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +29,11 @@
 		9832838715411B05002104D8 /* SplitView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SplitView-Prefix.pch"; sourceTree = "<group>"; };
 		9832838815411B05002104D8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9832838915411B05002104D8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9832839515411CD4002104D8 /* JBSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBSplitViewController.h; sourceTree = "<group>"; };
-		9832839615411CD4002104D8 /* JBSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBSplitViewController.m; sourceTree = "<group>"; };
 		9832839A15411D40002104D8 /* JBTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBTableViewController.h; sourceTree = "<group>"; };
 		9832839B15411D40002104D8 /* JBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBTableViewController.m; sourceTree = "<group>"; };
 		983283BB154221B0002104D8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		989063E315443FB300F5BE1D /* JBDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBDetailViewController.h; sourceTree = "<group>"; };
+		989063E415443FB300F5BE1D /* JBDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +82,8 @@
 		9832837F15411B05002104D8 /* SplitView */ = {
 			isa = PBXGroup;
 			children = (
+				989063E115443F8600F5BE1D /* JBDetailViewController */,
 				9832839815411D09002104D8 /* JBTableViewController */,
-				9832839415411CAA002104D8 /* JBSplitViewController */,
 				9832838815411B05002104D8 /* AppDelegate.h */,
 				9832838915411B05002104D8 /* AppDelegate.m */,
 				9832838015411B05002104D8 /* Supporting Files */,
@@ -102,15 +102,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9832839415411CAA002104D8 /* JBSplitViewController */ = {
-			isa = PBXGroup;
-			children = (
-				9832839515411CD4002104D8 /* JBSplitViewController.h */,
-				9832839615411CD4002104D8 /* JBSplitViewController.m */,
-			);
-			name = JBSplitViewController;
-			sourceTree = "<group>";
-		};
 		9832839815411D09002104D8 /* JBTableViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +109,15 @@
 				9832839B15411D40002104D8 /* JBTableViewController.m */,
 			);
 			name = JBTableViewController;
+			sourceTree = "<group>";
+		};
+		989063E115443F8600F5BE1D /* JBDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				989063E315443FB300F5BE1D /* JBDetailViewController.h */,
+				989063E415443FB300F5BE1D /* JBDetailViewController.m */,
+			);
+			name = JBDetailViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,8 +184,8 @@
 			files = (
 				9832838615411B05002104D8 /* main.m in Sources */,
 				9832838A15411B05002104D8 /* AppDelegate.m in Sources */,
-				9832839715411CD4002104D8 /* JBSplitViewController.m in Sources */,
 				9832839C15411D40002104D8 /* JBTableViewController.m in Sources */,
+				989063E515443FB300F5BE1D /* JBDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

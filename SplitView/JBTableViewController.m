@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Intalgent. All rights reserved.
 //
 
-#import "JBSplitViewController.h"
 #import "JBTableViewController.h"
+#import "JBDetailViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -19,7 +19,7 @@
 
 @implementation JBTableViewController
 
-@synthesize tableView = _tableView;
+@synthesize detailViewController = _detailViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,10 +32,10 @@
 
 - (void)loadView
 {
-    _tableView = [[UITableView alloc] initWithFrame:self.navigationController.view.frame style:UITableViewStylePlain];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    self.view = _tableView;
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.navigationController.view.frame style:UITableViewStylePlain];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    self.view = tableView;
 }
 
 - (void)viewDidLoad
@@ -56,7 +56,9 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-	return YES;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+        return YES;
+	return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
 #pragma mark - Table view data source
@@ -75,7 +77,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [(UITableView *)self.view dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
@@ -95,23 +97,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger row = indexPath.row;
-    UIViewController *detailViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-    detailViewController.view = [[UIView alloc] initWithFrame:detailViewController.navigationController.view.frame];
-    
+
     if (row == 0)
-        detailViewController.view.backgroundColor = [UIColor greenColor];
+        _detailViewController.view.backgroundColor = [UIColor greenColor];
     
     else if (row == 1)
-        detailViewController.view.backgroundColor = [UIColor blueColor];
+        _detailViewController.view.backgroundColor = [UIColor blueColor];
     
-    [((JBSplitViewController *)self.splitViewController) slideViewOut:self];
-    [((JBSplitViewController *)self.splitViewController) replaceDetailViewControllerWithDetailViewController:detailViewController];
+    if (!self.splitViewController)
+        [[self navigationController] pushViewController:_detailViewController animated:YES];
 }
 
 
 - (void)refresh:(id)sender
 {
-    [self.tableView reloadData];
+    [(UITableView *)self.view reloadData];
 }
 
 @end

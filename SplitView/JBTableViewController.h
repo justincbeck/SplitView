@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JBDetailViewController.h"
 
 @interface JBTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
-    UITableView *_tableView;
+    JBDetailViewController *_detailViewController;
 }
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) JBDetailViewController *detailViewController;
 
 @end
